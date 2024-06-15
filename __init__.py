@@ -22,11 +22,10 @@ def create_app(test_config=None):
     except OSError:
         pass
     
-    from . import db, auth
+    from . import db, auth, bot, settings
     db.init_app(app)
     app.register_blueprint(auth.bp)
-
-    from . import bot
+    app.register_blueprint(settings.bp)
     app.register_blueprint(bot.bp)
     app.add_url_rule('/', endpoint='index')
 
