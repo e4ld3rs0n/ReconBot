@@ -17,4 +17,13 @@ def index():
     #     ' FROM post p JOIN user u ON p.author_id = u.id'
     #     ' ORDER BY created DESC'
     # ).fetchall()
-    return render_template('home.html')
+
+    sidebar_items = [
+        {"label": "Dashboard", "url": "/", "active": True, "icon": "fa-gauge"},
+        {"label": "Add Target", "url": "/add-target", "active": False, "icon": "fa-gauge"},
+        {"label": "Remove Target", "url": "/remove-target", "active": False, "icon": "fa-gauge"},
+        {"label": "Settings", "url": "/settings", "active": False, "icon": "fa-gauge"}
+    ]
+
+    flash("This is a test alert! You can dismiss me")
+    return render_template('base.html', page_title='Dashboard', sidebar_items=sidebar_items)

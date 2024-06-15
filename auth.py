@@ -22,8 +22,6 @@ def load_logged_in_user():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
-    print('We got into login!')
-
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
