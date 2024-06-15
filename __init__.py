@@ -26,10 +26,8 @@ def create_app(test_config=None):
     db.init_app(app)
     app.register_blueprint(auth.bp)
 
-    @app.route('/')
-    def hello():
-        ret = "<a href='" + str(app.url_for("auth.register")) + "'>Register</a>"
-
-        return ret
+    from . import bot
+    app.register_blueprint(bot.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
