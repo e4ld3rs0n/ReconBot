@@ -26,9 +26,6 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        print(f'Username is {username}')
-        print(f'Password is {password}')
-
         db = get_db()
         error = None
 
@@ -44,7 +41,6 @@ def login():
             session['user_id'] = user['id']
             return redirect(url_for('index'))
 
-        print(f"Error is {error}")
         flash(error)
 
     return render_template('login.html')
