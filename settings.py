@@ -16,7 +16,7 @@ def userconfig():
         {"label": "App settings", "url": url_for('settings.appconfig'), "active": False, "icon": "fa-gear"}
     ]
 
-    return render_template('base.html', page_title='User settings', sidebar_items=sidebar_items)
+    return render_template('user-settings.html', page_title='User settings', sidebar_items=sidebar_items)
 
 @bp.route('/app-settings')
 @login_required
@@ -26,4 +26,4 @@ def appconfig():
         {"label": "App settings", "url": url_for('settings.appconfig'), "active": True, "icon": "fa-gear"}
     ]
 
-    return render_template('base.html', page_title='Application settings', sidebar_items=sidebar_items)
+    return render_template('app-settings.html', page_title='Application settings', sidebar_items=sidebar_items)

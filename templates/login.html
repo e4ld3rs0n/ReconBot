@@ -11,7 +11,9 @@
 
     <style>
         body {
-          background-image: url('{{ url_for('static', filename='assets/bg.jpg') }}');
+          {% set numbers = [1, 2, 3, 4, 5, 6, 7] %}
+          {% set random_wallpaper = numbers | random | string %}
+          background-image: url('{{ url_for('static', filename='assets/bg' + random_wallpaper + '.jpg') }}');
           background-size: cover;
           background-position: center;
           height: 100vh;

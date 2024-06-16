@@ -17,7 +17,7 @@
             {% if not hide_sidebar %}
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light"><i class="fa-solid fa-eye mx-1"></i> ReconBot</div>
+                <div class="sidebar-heading border-bottom bg-light fs-4 fw-bold"><img src="{{ url_for('static', filename='assets/icon-s.png') }}"></img> ReconBot</div>
                 <div class="list-group list-group-flush">
                     {% for item in sidebar_items %}
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 {% if item.active %}active{% endif %}" href="{{ item.url }}"><i class="fa-solid {{ item.icon }} mx-1"></i> {{ item.label }}</a>
@@ -58,8 +58,9 @@
                     </div>
                 {% endfor %}
                 
-                {% block content %}
-                {% endblock %}
+                <div class="d-flex px-4 py-2">
+                    {% block content %}{% endblock %}
+                </div>
             
             </div>
         </div>

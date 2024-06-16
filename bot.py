@@ -19,11 +19,18 @@ def index():
     # ).fetchall()
 
     sidebar_items = [
-        {"label": "Dashboard", "url": "/", "active": True, "icon": "fa-gauge"},
-        {"label": "Add Target", "url": "/add-target", "active": False, "icon": "fa-gauge"},
-        {"label": "Remove Target", "url": "/remove-target", "active": False, "icon": "fa-gauge"},
-        {"label": "Settings", "url": "/settings", "active": False, "icon": "fa-gauge"}
+        {"label": "Dashboard", "url": url_for('bot.index'), "active": True, "icon": "fa-gauge"},
+        {"label": "Scan target", "url": url_for('bot.scan_target'), "active": False, "icon": "fa-magnifying-glass"}
     ]
 
-    flash("This is a test alert! You can dismiss me")
-    return render_template('base.html', page_title='Dashboard', sidebar_items=sidebar_items)
+    return render_template('dashboard.html', page_title='Dashboard', sidebar_items=sidebar_items)
+
+@bp.route('/scan')
+@login_required
+def scan_target():
+    sidebar_items = [
+        {"label": "Dashboard", "url": url_for('bot.index'), "active": False, "icon": "fa-gauge"},
+        {"label": "Scan target", "url": url_for('bot.scan_target'), "active": True, "icon": "fa-magnifying-glass"}
+    ]
+
+    return render_template('scan-target.html', page_title='Scan target', sidebar_items=sidebar_items)
